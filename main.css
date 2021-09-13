@@ -44,6 +44,10 @@ h1 {
   }
 }
 
+.logo {
+  font-weight: 900;
+}
+
 .main-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -81,7 +85,7 @@ form {
           box-shadow: -10px 0px 47px -4px silver;
   padding: 4rem;
   padding-top: 2rem;
-  background-color: rgba(255, 255, 255, 0.301);
+  background-color: white;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -99,6 +103,14 @@ form {
 
 form h1 {
   color: #005dff;
+  font-size: 2rem;
+}
+
+@media (max-width: 650px) {
+  form h1 {
+    padding: 0;
+    font-size: 1.5rem;
+  }
 }
 
 form .inputs-container {
@@ -127,6 +139,7 @@ form .input-field-container {
 @media (max-width: 650px) {
   form .input-field-container {
     padding: 0.5rem 0;
+    height: 80px;
   }
 }
 
@@ -154,6 +167,7 @@ form .input-field-container label {
 @media (max-width: 650px) {
   form .input-field-container label {
     font-size: 1rem;
+    top: -35px;
   }
 }
 
@@ -173,6 +187,7 @@ form .input-field-container input {
   form .input-field-container input {
     font-size: 1.1rem;
     font-weight: 450;
+    height: 50px;
   }
 }
 
@@ -202,7 +217,7 @@ form .input-field-container input:valid {
 }
 
 form .input-field-container input:focus {
-  border: 2px solid #005dff !important;
+  border: 2px solid #5996ff !important;
   outline: none;
 }
 
@@ -215,6 +230,14 @@ form .input-field-container input:not(:placeholder-shown) + label {
   color: #005dff;
   font-weight: 600;
   left: 15px;
+}
+
+@media (max-width: 650px) {
+  form .input-field-container input:valid + label,
+  form .input-field-container input:focus + label,
+  form .input-field-container input:not(:placeholder-shown) + label {
+    top: -60px;
+  }
 }
 
 form .warning {

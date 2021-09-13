@@ -45,6 +45,9 @@ h1 {
     padding: 0.6rem;
   }
 }
+.logo {
+  font-weight: 900;
+}
 .main-container {
   display: flex;
   justify-content: center;
@@ -67,7 +70,7 @@ form {
   box-shadow: -10px 0px 47px -4px $primary-color;
   padding: 4rem;
   padding-top: 2rem;
-  background-color: rgba(255, 255, 255, 0.301);
+  background-color: rgb(255, 255, 255);
   justify-content: center;
   @include mobile() {
     margin: 0;
@@ -78,6 +81,11 @@ form {
   }
   h1 {
     color: $accent-color;
+    font-size: 2rem;
+    @include mobile() {
+      padding: 0;
+      font-size: 1.5rem;
+    }
   }
   .inputs-container {
     display: grid;
@@ -93,8 +101,10 @@ form {
   }
   .input-field-container {
     width: 100%;
+
     @include mobile() {
       padding: 0.5rem 0;
+      height: 80px;
     }
     label {
       position: relative;
@@ -114,6 +124,7 @@ form {
       cursor: text;
       @include mobile() {
         font-size: 1rem;
+        top: -35px;
       }
     }
     input {
@@ -126,9 +137,10 @@ form {
       border: 2px solid $primary-color;
       border-radius: 5px;
       z-index: 2;
-      @include mobile() {
+      @include mobile() { 
         font-size: 1.1rem;
         font-weight: 450;
+        height: 50px;
       }
       &:-webkit-autofill {
         box-shadow: 0 0 0px 1000px rgb(255, 255, 255) inset;
@@ -140,7 +152,7 @@ form {
         border: 2px solid $accent-color;
       }
       &:focus {
-        border: 2px solid #005dff !important;
+        border: 2px solid #5996ff !important;
         outline: none;
       }
     }
@@ -154,6 +166,9 @@ form {
       color: #005dff;
       font-weight: 600;
       left: 15px;
+      @include mobile() {
+        top: -60px;
+      }
     }
   }
   .warning {
