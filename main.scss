@@ -32,12 +32,18 @@ body {
   background-image: url('background.png');
   background-size: cover;
   background-repeat: no-repeat;
+  @include mobile() {
+    background: #fff;
+  }
 }
 
 h1 {
   text-align: center;
   padding: 1rem;
   font-size: 1.5rem;
+  @include mobile() {
+    padding: 0.6rem;
+  }
 }
 .main-container {
   display: flex;
@@ -61,11 +67,12 @@ form {
   box-shadow: -10px 0px 47px -4px $primary-color;
   padding: 4rem;
   padding-top: 2rem;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.301);
   justify-content: center;
   @include mobile() {
     margin: 0;
     box-shadow: none;
+    background: transparent;
 
     padding: 1rem;
   }
@@ -81,10 +88,14 @@ form {
     height: 100%;
     @include mobile() {
       grid-template-columns: repeat(1, 1fr);
+      gap: 0rem;
     }
   }
   .input-field-container {
     width: 100%;
+    @include mobile() {
+      padding: 0.5rem 0;
+    }
     label {
       position: relative;
       width: fit-content;
@@ -101,6 +112,9 @@ form {
       background: #fff;
       color: $primary-dark-color;
       cursor: text;
+      @include mobile() {
+        font-size: 1rem;
+      }
     }
     input {
       font-weight: 600;
@@ -112,7 +126,10 @@ form {
       border: 2px solid $primary-color;
       border-radius: 5px;
       z-index: 2;
-
+      @include mobile() {
+        font-size: 1.1rem;
+        font-weight: 450;
+      }
       &:-webkit-autofill {
         box-shadow: 0 0 0px 1000px rgb(255, 255, 255) inset;
       }
@@ -131,9 +148,8 @@ form {
     input:valid + label,
     input:focus + label,
     input:not(:placeholder-shown) + label {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       z-index: 1;
-      font-size: 1rem;
       top: -71px;
       color: #005dff;
       font-weight: 600;
@@ -150,10 +166,13 @@ form {
     color: rgb(211, 0, 0);
     z-index: 10;
     font-size: 1rem;
+    @include mobile() {
+      font-size: 0.8rem;
+    }
   }
 
   .btn {
-    width: 200px;
+    width: 180px;
     font-size: 1.3em;
     padding: 0.7rem 1.5rem;
     border: none;
@@ -167,6 +186,15 @@ form {
 
     &:hover {
       box-shadow: -2px 2px 10px #2500fa, 2px -2px 10px #2500fa;
+    }
+    @include mobile() {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      width: 100px;
+      margin-top: 0;
+      &:hover {
+        box-shadow: -1px 1px 5px #2500fa, 1px -1px 5px #2500fa;
+      }
     }
   }
   button:disabled {

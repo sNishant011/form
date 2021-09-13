@@ -26,10 +26,22 @@ body {
   background-repeat: no-repeat;
 }
 
+@media (max-width: 650px) {
+  body {
+    background: #fff;
+  }
+}
+
 h1 {
   text-align: center;
   padding: 1rem;
   font-size: 1.5rem;
+}
+
+@media (max-width: 650px) {
+  h1 {
+    padding: 0.6rem;
+  }
 }
 
 .main-container {
@@ -69,7 +81,7 @@ form {
           box-shadow: -10px 0px 47px -4px silver;
   padding: 4rem;
   padding-top: 2rem;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.301);
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -80,6 +92,7 @@ form {
     margin: 0;
     -webkit-box-shadow: none;
             box-shadow: none;
+    background: transparent;
     padding: 1rem;
   }
 }
@@ -103,11 +116,18 @@ form .inputs-container {
   form .inputs-container {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
+    gap: 0rem;
   }
 }
 
 form .input-field-container {
   width: 100%;
+}
+
+@media (max-width: 650px) {
+  form .input-field-container {
+    padding: 0.5rem 0;
+  }
 }
 
 form .input-field-container label {
@@ -131,6 +151,12 @@ form .input-field-container label {
   cursor: text;
 }
 
+@media (max-width: 650px) {
+  form .input-field-container label {
+    font-size: 1rem;
+  }
+}
+
 form .input-field-container input {
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -141,6 +167,13 @@ form .input-field-container input {
   border: 2px solid silver;
   border-radius: 5px;
   z-index: 2;
+}
+
+@media (max-width: 650px) {
+  form .input-field-container input {
+    font-size: 1.1rem;
+    font-weight: 450;
+  }
 }
 
 form .input-field-container input:-webkit-autofill {
@@ -176,9 +209,8 @@ form .input-field-container input:focus {
 form .input-field-container input:valid + label,
 form .input-field-container input:focus + label,
 form .input-field-container input:not(:placeholder-shown) + label {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   z-index: 1;
-  font-size: 1rem;
   top: -71px;
   color: #005dff;
   font-weight: 600;
@@ -197,8 +229,14 @@ form .warning {
   font-size: 1rem;
 }
 
+@media (max-width: 650px) {
+  form .warning {
+    font-size: 0.8rem;
+  }
+}
+
 form .btn {
-  width: 200px;
+  width: 180px;
   font-size: 1.3em;
   padding: 0.7rem 1.5rem;
   border: none;
@@ -216,6 +254,19 @@ form .btn {
 form .btn:hover {
   -webkit-box-shadow: -2px 2px 10px #2500fa, 2px -2px 10px #2500fa;
           box-shadow: -2px 2px 10px #2500fa, 2px -2px 10px #2500fa;
+}
+
+@media (max-width: 650px) {
+  form .btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    width: 100px;
+    margin-top: 0;
+  }
+  form .btn:hover {
+    -webkit-box-shadow: -1px 1px 5px #2500fa, 1px -1px 5px #2500fa;
+            box-shadow: -1px 1px 5px #2500fa, 1px -1px 5px #2500fa;
+  }
 }
 
 form button:disabled {
