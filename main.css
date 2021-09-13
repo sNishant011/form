@@ -99,6 +99,13 @@ form .inputs-container {
   height: 100%;
 }
 
+@media (max-width: 650px) {
+  form .inputs-container {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 form .input-field-container {
   width: 100%;
 }
