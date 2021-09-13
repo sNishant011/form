@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <title>SN Form</title>
+</head>
+
+<body>
+  <h1>SN Form with Validation</h1>
+  <div class="main-container">
+
+    <form class="form-container" id="sign-up" onsubmit="checkForm()">
+      <h1>Sign Up</h1>
+      <div class="inputs-container">
+        <div class="input-field-container">
+          <input type="text" onkeyup="nameValidator(this.value.length)" name="name" placeholder=" " id="name" required>
+          <label for="name">Your Name</label>
+          <i class="warning name-warning" id="name-warning"> </i>
+
+        </div>
+        <div class="input-field-container">
+          <input type="email" name="email" placeholder=" " onfocusout="emailValidator(this.value)" id="email" required>
+          <label for="email">Email</label>
+          <i class="warning email-warning" id="email-warning"> </i>
+        </div>
+        <div class="input-field-container">
+          <input type="text" name="uname" placeholder=" " maxlength="32" id="uname" required>
+          <label for="uname">Username</label>
+          <i class="warning uname-warning">Username already exists.</i>
+
+        </div>
+        <div class="input-field-container">
+          <input type="text" onclick="return toggleDoB()" name="dob" placeholder=" " id="dob" required>
+          <label for="dob">Date of Birth</label>
+          <i class="warning dob-warning">Age should be greater than 18</i>
+
+        </div>
+
+        <div class="input-field-container">
+          <input type="password" name="password1" minlength="6" maxlength="32" placeholder=" " id="password1" required>
+          <label for="password1">Password</label>
+          <i class="warning password-warning">Passwords Don't Match</i>
+
+        </div>
+        <div class="input-field-container">
+          <input type="password" name="password2" placeholder=" " id="password2" required>
+          <label for="password2">Confirm Password</label>
+        </div>
+
+      </div>
+
+      <button class="btn submit" type="submit">Submit</button>
+    </form>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
