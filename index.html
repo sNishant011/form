@@ -20,35 +20,37 @@
           <input type="text" onkeyup="nameValidator(this.value.length)" name="name" placeholder=" " id="name" required>
           <label for="name">Your Name</label>
           <i class="warning name-warning" id="name-warning"> </i>
-
         </div>
         <div class="input-field-container">
-          <input type="email" name="email" placeholder=" " onfocusout="emailValidator(this.value)" id="email" required>
+          <input type="email" name="email" placeholder=" " onchange="emailValidator(this.value)" id="email" required>
           <label for="email">Email</label>
           <i class="warning email-warning" id="email-warning"> </i>
         </div>
         <div class="input-field-container">
-          <input type="text" name="uname" placeholder=" " maxlength="32" id="uname" required>
-          <label for="uname">Username</label>
-          <i class="warning uname-warning">Username already exists.</i>
-
+          <input type="text" name="username" onkeyup="usernameValidator(this.value)" placeholder=" " maxlength="32"
+            id="username" required>
+          <label for="username">Username</label>
+          <i class="warning username-warning" id="username-warning"></i>
         </div>
         <div class="input-field-container">
-          <input type="text" onclick="return toggleDoB()" name="dob" placeholder=" " id="dob" required>
+          <input type="text" onclick="return toggleDoB()" onchange="dobValidator(this.value)" name="dob" placeholder=" "
+            id="dob" required>
           <label for="dob">Date of Birth</label>
-          <i class="warning dob-warning">Age should be greater than 18</i>
+          <i class="warning dob-warning" id="dob-warning"></i>
 
         </div>
 
         <div class="input-field-container">
-          <input type="password" name="password1" minlength="6" maxlength="32" placeholder=" " id="password1" required>
+          <input type="password" name="password1" onchange="" placeholder=" " id="password1" required>
           <label for="password1">Password</label>
-          <i class="warning password-warning">Passwords Don't Match</i>
+          <span class="strength-bar bad medium strong"></span>
 
         </div>
         <div class="input-field-container">
           <input type="password" name="password2" placeholder=" " id="password2" required>
           <label for="password2">Confirm Password</label>
+          <i class="warning password-warning">dfasd</i>
+
         </div>
 
       </div>

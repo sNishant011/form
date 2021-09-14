@@ -40,12 +40,13 @@ body {
 h1 {
   text-align: center;
   padding: 1rem;
-  font-size: 1.5rem;
   @include mobile() {
     padding: 0.6rem;
   }
 }
 .logo {
+  font-size: 3rem;
+  font-family: 'Nunito', sans-serif;
   font-weight: 900;
 }
 .main-container {
@@ -101,10 +102,10 @@ form {
   }
   .input-field-container {
     width: 100%;
-
+    justify-content: center;
     @include mobile() {
       padding: 0.5rem 0;
-      height: 80px;
+      height: 85px;
     }
     label {
       position: relative;
@@ -137,7 +138,7 @@ form {
       border: 2px solid $primary-color;
       border-radius: 5px;
       z-index: 2;
-      @include mobile() { 
+      @include mobile() {
         font-size: 1.1rem;
         font-weight: 450;
         height: 50px;
@@ -152,7 +153,7 @@ form {
         border: 2px solid $accent-color;
       }
       &:focus {
-        border: 2px solid #5996ff !important;
+        border: 2px solid #70a4ff !important;
         outline: none;
       }
     }
@@ -179,7 +180,7 @@ form {
     font-weight: 600;
     width: 95%;
     color: rgb(211, 0, 0);
-    z-index: 10;
+    z-index: 1;
     font-size: 1rem;
     @include mobile() {
       font-size: 0.8rem;
@@ -220,4 +221,25 @@ form {
       box-shadow: none;
     }
   }
+}
+.strength-bar {
+  display: block;
+  height: 5px;
+  box-shadow: 1px 1px 2px rgb(175, 175, 175);
+  margin-left: 10px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 50px;
+}
+.bad {
+  width: 30%;
+  background-color: rgb(161, 0, 0);
+}
+.medium {
+  width: 60%;
+  background-color: rgb(231, 255, 17);
+}
+.strong {
+  width: 90%;
+
+  background-color: rgb(0, 68, 255);
 }

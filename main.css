@@ -35,7 +35,6 @@ body {
 h1 {
   text-align: center;
   padding: 1rem;
-  font-size: 1.5rem;
 }
 
 @media (max-width: 650px) {
@@ -45,6 +44,8 @@ h1 {
 }
 
 .logo {
+  font-size: 3rem;
+  font-family: 'Nunito', sans-serif;
   font-weight: 900;
 }
 
@@ -134,12 +135,15 @@ form .inputs-container {
 
 form .input-field-container {
   width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media (max-width: 650px) {
   form .input-field-container {
     padding: 0.5rem 0;
-    height: 80px;
+    height: 85px;
   }
 }
 
@@ -217,7 +221,7 @@ form .input-field-container input:valid {
 }
 
 form .input-field-container input:focus {
-  border: 2px solid #5996ff !important;
+  border: 2px solid #70a4ff !important;
   outline: none;
 }
 
@@ -248,7 +252,7 @@ form .warning {
   font-weight: 600;
   width: 95%;
   color: #d30000;
-  z-index: 10;
+  z-index: 1;
   font-size: 1rem;
 }
 
@@ -302,5 +306,31 @@ form button:disabled {
 form button:disabled:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+.strength-bar {
+  display: block;
+  height: 5px;
+  -webkit-box-shadow: 1px 1px 2px #afafaf;
+          box-shadow: 1px 1px 2px #afafaf;
+  margin-left: 10px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border-radius: 50px;
+}
+
+.bad {
+  width: 30%;
+  background-color: #a10000;
+}
+
+.medium {
+  width: 60%;
+  background-color: #e7ff11;
+}
+
+.strong {
+  width: 90%;
+  background-color: #0044ff;
 }
 /*# sourceMappingURL=main.css.map */
