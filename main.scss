@@ -172,7 +172,7 @@ form {
       }
     }
     .password-field {
-      padding-right: 20px;
+      padding-right: 60px !important;
     }
   }
   .warning {
@@ -188,6 +188,9 @@ form {
     @include mobile() {
       font-size: 0.8rem;
     }
+  }
+  .password1-warning {
+    top: -38px;
   }
 
   .btn {
@@ -248,13 +251,16 @@ form {
 }
 .toggle-password {
   position: relative;
-  top: -60%;
-  left: 90%;
+  top: -50%;
+  left: 91%;
   cursor: pointer;
   padding: 0.5rem;
   color: $accent-color;
+  @include tablet() {
+    left: 85%;
+  }
   @include mobile() {
     top: -85%;
-    left: 85%;
+    left: 87%;
   }
 }

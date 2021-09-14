@@ -245,7 +245,7 @@ form .input-field-container input:not(:placeholder-shown) + label {
 }
 
 form .input-field-container .password-field {
-  padding-right: 20px;
+  padding-right: 60px !important;
 }
 
 form .warning {
@@ -264,6 +264,10 @@ form .warning {
   form .warning {
     font-size: 0.8rem;
   }
+}
+
+form .password1-warning {
+  top: -38px;
 }
 
 form .btn {
@@ -340,17 +344,23 @@ form button:disabled:hover {
 
 .toggle-password {
   position: relative;
-  top: -60%;
-  left: 90%;
+  top: -50%;
+  left: 91%;
   cursor: pointer;
   padding: 0.5rem;
   color: #005dff;
 }
 
+@media (max-width: 800px) {
+  .toggle-password {
+    left: 85%;
+  }
+}
+
 @media (max-width: 650px) {
   .toggle-password {
     top: -85%;
-    left: 85%;
+    left: 87%;
   }
 }
 /*# sourceMappingURL=main.css.map */
