@@ -4,11 +4,31 @@ const toggleDate = () => {
 }
 
 const email_db = ['shresthanishant011@gmail.com']
-const user_db = ['srestn011', 'nishant']
+const user_db = ['srestn011', 'nishant', 'prashant']
 var isNameValid = false
 var isEmailValid = false
 var isUsernameValid = false
 var isdobValid = false
+// password shower
+var passShow = false
+const showPassword = () => {
+  if (passShow) {
+    document.getElementById('password1').type = 'password'
+    document.getElementById('password2').type = 'password'
+    document.getElementById('show_hide-icon').classList.remove('fa-eye-slash')
+    document.getElementById('show_hide-icon').classList.add('fa-eye')
+
+    passShow = false
+  } else {
+    document.getElementById('password1').type = 'text'
+    document.getElementById('password2').type = 'text'
+    document.getElementById('show_hide-icon').classList.remove('fa-eye')
+
+    document.getElementById('show_hide-icon').classList.add('fa-eye-slash')
+
+    passShow = true
+  }
+}
 // validates email
 const emailValidator = (email) => {
   const email_warner = document.getElementById('email-warning')
@@ -16,13 +36,13 @@ const emailValidator = (email) => {
     if (email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
       if (email_db.includes(email)) {
         isEmailValid = false
-        email_warner.innerHTML = 'arkako email nalekhna bhai.'
+        email_warner.innerHTML = 'Email already registered.'
       } else {
         isEmailValid = true
         email_warner.innerHTML = ''
       }
     } else {
-      email_warner.innerHTML = 'Email kasto hunxa tha xaina talai?'
+      email_warner.innerHTML = 'Please enter a valid email'
     }
   }
 }
@@ -31,10 +51,11 @@ const nameValidator = (len) => {
   const name_warner = document.getElementById('name-warning')
 
   if (len > 32) {
-    name_warner.innerHTML = 'kati lamo name agadi rw paxadi ko matra lekh'
+    name_warner.innerHTML =
+      'Name is too long. It should be less than 32 letters.'
     isNameValid = false
   } else if (len < 2) {
-    name_warner.innerHTML = 'name nai xaina ki k ho'
+    name_warner.innerHTML = 'name should be at least of 2 letter'
     isNameValid = false
   } else {
     name_warner.innerHTML = ''
@@ -46,20 +67,16 @@ const usernameValidator = (username) => {
   const username_warner = document.getElementById('username-warning')
   if (username.match(/[-!$%^&*()_+|~=`\\#{}\[\]:";'<>?,.\/]/)) {
     isUsernameValid = false
-    username_warner.innerHTML = 'Jpt name narakhna hey bhagwan!!'
-    if (username.length > 20) {
-      isUsernameValid = false
-      username_warner.innerHTML = 'Jpt lamo name narakhna hey bhagwan!!'
-    }
+    username_warner.innerHTML =
+      'Username should be formed using letters and numbers only.'
   } else {
     if (username.length > 20) {
       isUsernameValid = false
-      username_warner.innerHTML =
-        'ajhai lamo rakhna.. database bharini tw mero ho'
+      username_warner.innerHTML = 'Username should be less than 20 character.'
     } else if (user_db.includes(username)) {
       isUsernameValid = false
 
-      username_warner.innerHTML = 'ali unique rakhna.. yo name pailai xa'
+      username_warner.innerHTML = 'This username is already taken.'
     } else {
       isUsernameValid = true
       username_warner.innerHTML = ''
@@ -83,4 +100,3 @@ const dobValidator = (dob) => {
     }
   }
 }
-document.addEventListener('focusout')

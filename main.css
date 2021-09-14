@@ -244,6 +244,10 @@ form .input-field-container input:not(:placeholder-shown) + label {
   }
 }
 
+form .input-field-container .password-field {
+  padding-right: 20px;
+}
+
 form .warning {
   display: block;
   position: relative;
@@ -332,5 +336,21 @@ form button:disabled:hover {
 .strong {
   width: 90%;
   background-color: #0044ff;
+}
+
+.toggle-password {
+  position: relative;
+  top: -60%;
+  left: 90%;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #005dff;
+}
+
+@media (max-width: 650px) {
+  .toggle-password {
+    top: -85%;
+    left: 85%;
+  }
 }
 /*# sourceMappingURL=main.css.map */
