@@ -1,6 +1,10 @@
-const toggleDoB = () => {
+const toggleDate = () => {
   var dateField = document.getElementById('dob')
   dateField.setAttribute('type', 'date')
+}
+const toggleText = () => {
+  var dateField = document.getElementById('dob')
+  dateField.setAttribute('type', 'text')
 }
 const email_db = ['shresthanishant011@gmail.com']
 const user_db = ['srestn011', 'nishant']
@@ -82,3 +86,4 @@ const dobValidator = (dob) => {
     }
   }
 }
+document.addEventListener('focusout')
