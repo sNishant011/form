@@ -9,6 +9,7 @@ var isNameValid = false
 var isEmailValid = false
 var isUsernameValid = false
 var isdobValid = false
+var isPasswordValid = false
 // password shower
 var passShow = false
 const showPassword = () => {
@@ -113,14 +114,99 @@ const dobValidator = (dob) => {
 const checkPasswordStrength = (password) => {
   const password_warner = document.getElementById('password1-warning')
   if (password !== '') {
-    const full_name = document.getElementById('name').value
-    const username = document.getElementById('username').value
-    const dob = document.getElementById('dob').value
-    const dates = dob.split('-')
-    const names = full_name.split(' ')
-    let insecure_variables = [...names, username, ...dates]
-    // /[-!$%^&*()_ +|~=`\\#{}\[\]:";'<>?,.\/1234567890 ]/
+    if (password <= 3) {
+      isPasswordValid = false
+      password_warner.innerHTML = 'Password should be at least of 4 characters.'
+    } else {
+      isPasswordValid = true
+      const full_name = document.getElementById('name').value
+      const username = document.getElementById('username').value
+      const dob = document.getElementById('dob').value
+      const dates = dob.split('-')
+      const names = full_name.split(' ')
+      let insecure_variables = [...names, username, ...dates]
+      var uses_insecure_variables = false
+
+      for (var i = 0; i < insecure_variables.length; i++) {
+        if (insecure_variables[i] !== '') {
+          if (password.includes(insecure_variables[i].toLowerCase())) {
+            uses_insecure_variables = true
+          }
+        }
+        break
+      }
+      if (password.match(/[-!$%^&*()_ +|~=`\\#{}\[\]:";'<>?,.\/1234567890 ]/)) {
+        if (uses_insecure_variables) {
+          if (password.length < 5) {
+            password_warner.innerHTML =
+              'Very Weak (Contains guessable personal information)'
+          } else if (password.length < 8) {
+            password_warner.innerHTML =
+              'Weak (Contains guessable personal information)'
+          } else if (password.length <= 10) {
+            password_warner.innerHTML =
+              'Medium (Contains guessable personal information)'
+          } else {
+            password_warner.innerHTML =
+              'Strong (Contains guessable personal information)'
+          }
+        } else {
+          if (password.length < 5) {
+            password_warner.innerHTML = 'Weak'
+          } else if (password.length < 8) {
+            password_warner.innerHTML = 'Medium'
+          } else if (password.length <= 10) {
+            password_warner.innerHTML = 'Strong'
+          } else {
+            password_warner.innerHTML = 'Very Strong'
+          }
+        }
+      } else {
+        if (uses_insecure_variables) {
+          if (password.length < 5) {
+            password_warner.innerHTML =
+              'Very Weak (Contains guessable personal information)'
+          } else if (password.length < 8) {
+            password_warner.innerHTML =
+              'Weak (Contains guessable personal information)'
+          } else if (password.length <= 10) {
+            password_warner.innerHTML =
+              'Medium (Contains guessable personal information)'
+          } else {
+            password_warner.innerHTML =
+              'Strong (Contains guessable personal information)'
+          }
+        } else {
+          if (password.length < 5) {
+            password_warner.innerHTML = 'Weak'
+          } else if (password.length < 8) {
+            password_warner.innerHTML = 'Medium'
+          } else {
+            password_warner.innerHTML = 'Strong'
+          }
+        }
+      }
+    }
   } else {
     password_warner.innerHTML = 'Password cannot be empty.'
+  }
+}
+const passwordConfirmer = () => {
+  const pass1 = document.getElementById('password1').value
+  const pass2 = document.getElementById('password2').value
+  if (pass1 !== '') {
+    if (pass1 === pass2) {
+      isPasswordValid = true
+      document.getElementById('password2-warning').innerHTML = 'Ready to go!!'
+    } else {
+      isPasswordValid = false
+      document.getElementById('password2-warning').innerHTML =
+        "Passwords aren't matching."
+    }
+  } else {
+    isPasswordValid = false
+
+    document.getElementById('password2-warning').innerHTML =
+      'Please set your password first.'
   }
 }

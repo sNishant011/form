@@ -248,6 +248,10 @@ form .input-field-container .password-field {
   padding-right: 60px !important;
 }
 
+form #name {
+  text-transform: capitalize;
+}
+
 form .warning {
   display: block;
   position: relative;

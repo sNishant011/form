@@ -175,7 +175,9 @@ form {
       padding-right: 60px !important;
     }
   }
-
+  #name {
+    text-transform: capitalize;
+  }
   .warning {
     display: block;
     position: relative;

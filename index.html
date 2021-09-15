@@ -51,7 +51,8 @@
 
         </div>
         <div class="input-field-container">
-          <input type="password" name="password2" placeholder=" " id="password2" required>
+          <input type="password" name="password2" onkeyup="passwordConfirmer()" onfocusout="passwordConfirmer()"
+            placeholder=" " id="password2" required>
           <label for="password2">Confirm Password</label>
           <i class="warning password2-warning" id="password2-warning"></i>
 
