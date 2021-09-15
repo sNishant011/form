@@ -42,8 +42,10 @@ const emailValidator = (email) => {
         email_warner.innerHTML = ''
       }
     } else {
-      email_warner.innerHTML = 'Please enter a valid email'
+      email_warner.innerHTML = 'Please enter a valid email.'
     }
+  } else {
+    email_warner.innerHTML = 'Email cannot be empty.'
   }
 }
 
@@ -55,7 +57,7 @@ const nameValidator = (len) => {
       'Name is too long. It should be less than 32 letters.'
     isNameValid = false
   } else if (len < 2) {
-    name_warner.innerHTML = 'name should be at least of 2 letter'
+    name_warner.innerHTML = 'Name should be at least of 2 letter'
     isNameValid = false
   } else {
     name_warner.innerHTML = ''
@@ -65,12 +67,15 @@ const nameValidator = (len) => {
 
 const usernameValidator = (username) => {
   const username_warner = document.getElementById('username-warning')
-  if (username.match(/[-!$%^&*()_+|~=`\\#{}\[\]:";'<>?,.\/]/)) {
+  if (username.match(/[-!$%^&*()_ +|~=`\\#{}\[\]:";'<>?,.\/]/)) {
     isUsernameValid = false
     username_warner.innerHTML =
       'Username should be formed using letters and numbers only.'
   } else {
-    if (username.length > 20) {
+    if (username === '') {
+      isUsernameValid = false
+      username_warner.innerHTML = 'Username cannot be empty.'
+    } else if (username.length > 20) {
       isUsernameValid = false
       username_warner.innerHTML = 'Username should be less than 20 character.'
     } else if (user_db.includes(username)) {
@@ -86,17 +91,36 @@ const usernameValidator = (username) => {
 
 const dobValidator = (dob) => {
   const dob_warner = document.getElementById('dob-warning')
-
   const age = Date.now() - Date.parse(dob)
-  if (age >= 567993600000) {
-    isdobValid = true
-    dob_warner.innerHTML = ''
+  if (dob !== '') {
+    if (age >= 567993600000) {
+      isdobValid = true
+      dob_warner.innerHTML = ''
+    } else {
+      isdobValid = false
+      if (Date.parse(dob) > Date.now()) {
+        dob_warner.innerHTML = 'Janminai baki raixas'
+      } else {
+        dob_warner.innerHTML = 'bacchai xas'
+      }
+    }
   } else {
     isdobValid = false
-    if (Date.parse(dob) > Date.now()) {
-      dob_warner.innerHTML = 'Janminai baki raixas'
-    } else {
-      dob_warner.innerHTML = 'bacchai xas'
-    }
+    dob_warner.innerHTML = 'Date of Birth is mandatory field.'
+  }
+}
+
+const checkPasswordStrength = (password) => {
+  const password_warner = document.getElementById('password1-warning')
+  if (password !== '') {
+    const full_name = document.getElementById('name').value
+    const username = document.getElementById('username').value
+    const dob = document.getElementById('dob').value
+    const dates = dob.split('-')
+    const names = full_name.split(' ')
+    let insecure_variables = [...names, username, ...dates]
+    // /[-!$%^&*()_ +|~=`\\#{}\[\]:";'<>?,.\/1234567890 ]/
+  } else {
+    password_warner.innerHTML = 'Password cannot be empty.'
   }
 }

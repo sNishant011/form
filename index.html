@@ -35,15 +35,15 @@
           <i class="warning username-warning" id="username-warning"></i>
         </div>
         <div class="input-field-container">
-          <input type="text" onfocus="return toggleDate()" onchange="dobValidator(this.value)" name="dob"
+          <input type="text" onfocus="return toggleDate()" onfocusout="dobValidator(this.value)" name="dob"
             placeholder=" " id="dob" required>
           <label for="dob">Date of Birth</label>
           <i class="warning dob-warning" id="dob-warning"></i>
 
         </div>
 
-        <div class="input-field-container">
-          <input type="password" class="password-field" name="password1" onclick="checkPasswordStrength()"
+        <div class="input-field-container password-container">
+          <input type="password" class="password-field" name="password1" onkeyup="checkPasswordStrength(this.value)"
             placeholder=" " id="password1" required>
           <label for="password1">Password</label>
           <span class="toggle-password" onclick="showPassword()"><i class="fas fa-eye" id="show_hide-icon"></i></span>
