@@ -18,8 +18,8 @@
       <h1>Sign Up</h1>
       <div class="inputs-container">
         <div class="input-field-container">
-          <input type="text" onfocusout="nameValidator(this.value.length)" name="name" placeholder=" " id="name"
-            required>
+          <input type="text" onchange="nameValidator(this.value, this.value.length)"
+            onkeyup="nameValidator(this.value, this.value.length)" name="name" placeholder=" " id="name" required>
           <label for="name">Your Name</label>
           <i class="warning name-warning" id="name-warning"> </i>
         </div>

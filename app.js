@@ -65,19 +65,23 @@ const emailValidator = (email) => {
   formValidator()
 }
 
-const nameValidator = (len) => {
+const nameValidator = (name_value, len) => {
   const name_warner = document.getElementById('name-warning')
-
-  if (len > 32) {
-    name_warner.innerHTML =
-      'Name is too long. It should be less than 32 letters.'
-    isNameValid = false
-  } else if (len < 2) {
-    name_warner.innerHTML = 'Name should be at least of 2 letter'
-    isNameValid = false
+  if (!name_value.match(/[1234567890]/)) {
+    if (len > 32) {
+      name_warner.innerHTML =
+        'Name is too long. It should be less than 32 letters.'
+      isNameValid = false
+    } else if (len < 2) {
+      name_warner.innerHTML = 'Name should be at least of 2 letter'
+      isNameValid = false
+    } else {
+      name_warner.innerHTML = ''
+      isNameValid = true
+    }
   } else {
-    name_warner.innerHTML = ''
-    isNameValid = true
+    isNameValid = false
+    name_warner.innerHTML = 'Name should not contain numbers.'
   }
   formValidator()
 }
