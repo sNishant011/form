@@ -23,6 +23,7 @@ const formValidator = () => {
     isPasswordMatched
   ) {
     document.getElementById('submit-btn').removeAttribute('disabled')
+    document.getElementById('submit-btn').setAttribute('type', 'submit')
   }
 }
 const showPassword = () => {
@@ -146,7 +147,9 @@ const checkPasswordStrength = (password) => {
 
       for (var i = 0; i < insecure_variables.length; i++) {
         if (insecure_variables[i] !== '') {
-          if (password.includes(insecure_variables[i].toLowerCase())) {
+          if (
+            password.toLowerCase().includes(insecure_variables[i].toLowerCase())
+          ) {
             uses_insecure_variables = true
           }
         }
