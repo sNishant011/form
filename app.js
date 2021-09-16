@@ -10,8 +10,21 @@ var isEmailValid = false
 var isUsernameValid = false
 var isdobValid = false
 var isPasswordValid = false
+var isPasswordMatched = false
 // password shower
 var passShow = false
+const formValidator = () => {
+  if (
+    isNameValid &&
+    isEmailValid &&
+    isUsernameValid &&
+    isdobValid &&
+    isPasswordValid &&
+    isPasswordMatched
+  ) {
+    document.getElementById('submit-btn').removeAttribute('disabled')
+  }
+}
 const showPassword = () => {
   if (passShow) {
     document.getElementById('password1').type = 'password'
@@ -48,6 +61,7 @@ const emailValidator = (email) => {
   } else {
     email_warner.innerHTML = 'Email cannot be empty.'
   }
+  formValidator()
 }
 
 const nameValidator = (len) => {
@@ -64,6 +78,7 @@ const nameValidator = (len) => {
     name_warner.innerHTML = ''
     isNameValid = true
   }
+  formValidator()
 }
 
 const usernameValidator = (username) => {
@@ -88,6 +103,7 @@ const usernameValidator = (username) => {
       username_warner.innerHTML = ''
     }
   }
+  formValidator()
 }
 
 const dobValidator = (dob) => {
@@ -100,15 +116,16 @@ const dobValidator = (dob) => {
     } else {
       isdobValid = false
       if (Date.parse(dob) > Date.now()) {
-        dob_warner.innerHTML = 'Janminai baki raixas'
+        dob_warner.innerHTML = 'Date cannot be in future.'
       } else {
-        dob_warner.innerHTML = 'bacchai xas'
+        dob_warner.innerHTML = 'Your age needs to be above 18 first.'
       }
     }
   } else {
     isdobValid = false
     dob_warner.innerHTML = 'Date of Birth is mandatory field.'
   }
+  formValidator()
 }
 
 const checkPasswordStrength = (password) => {
@@ -139,16 +156,15 @@ const checkPasswordStrength = (password) => {
         if (uses_insecure_variables) {
           if (password.length < 5) {
             password_warner.innerHTML =
-              'Very Weak (Contains guessable personal information)'
+              'Very Weak (Contains guessable information)'
           } else if (password.length < 8) {
-            password_warner.innerHTML =
-              'Weak (Contains guessable personal information)'
+            password_warner.innerHTML = 'Weak (Contains guessable information)'
           } else if (password.length <= 10) {
             password_warner.innerHTML =
-              'Medium (Contains guessable personal information)'
+              'Medium (Contains guessable information)'
           } else {
             password_warner.innerHTML =
-              'Strong (Contains guessable personal information)'
+              'Strong (Contains guessable information)'
           }
         } else {
           if (password.length < 5) {
@@ -165,16 +181,15 @@ const checkPasswordStrength = (password) => {
         if (uses_insecure_variables) {
           if (password.length < 5) {
             password_warner.innerHTML =
-              'Very Weak (Contains guessable personal information)'
+              'Very Weak (Contains guessable information)'
           } else if (password.length < 8) {
-            password_warner.innerHTML =
-              'Weak (Contains guessable personal information)'
+            password_warner.innerHTML = 'Weak (Contains guessable information)'
           } else if (password.length <= 10) {
             password_warner.innerHTML =
-              'Medium (Contains guessable personal information)'
+              'Medium (Contains guessable information)'
           } else {
             password_warner.innerHTML =
-              'Strong (Contains guessable personal information)'
+              'Strong (Contains guessable information)'
           }
         } else {
           if (password.length < 5) {
@@ -190,23 +205,27 @@ const checkPasswordStrength = (password) => {
   } else {
     password_warner.innerHTML = 'Password cannot be empty.'
   }
+  passwordConfirmer()
 }
 const passwordConfirmer = () => {
   const pass1 = document.getElementById('password1').value
   const pass2 = document.getElementById('password2').value
-  if (pass1 !== '') {
-    if (pass1 === pass2) {
-      isPasswordValid = true
-      document.getElementById('password2-warning').innerHTML = 'Ready to go!!'
+  if (pass2 !== '') {
+    if (pass1 !== '') {
+      if (pass1 === pass2) {
+        isPasswordMatched = true
+        document.getElementById('password2-warning').innerHTML = 'Ready to go!!'
+      } else {
+        isPasswordMatched = false
+        document.getElementById('password2-warning').innerHTML =
+          "Passwords aren't matching."
+      }
     } else {
-      isPasswordValid = false
-      document.getElementById('password2-warning').innerHTML =
-        "Passwords aren't matching."
-    }
-  } else {
-    isPasswordValid = false
+      isPasswordMatched = false
 
-    document.getElementById('password2-warning').innerHTML =
-      'Please set your password first.'
+      document.getElementById('password2-warning').innerHTML =
+        'Please set your password first.'
+    }
   }
+  formValidator()
 }

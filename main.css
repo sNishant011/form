@@ -182,7 +182,7 @@ form .input-field-container input {
   font-size: 1.3rem;
   width: 100%;
   height: 60px;
-  border: 2px solid silver;
+  border: 2px solid #70a4ff;
   border-radius: 5px;
   z-index: 2;
 }
@@ -221,7 +221,7 @@ form .input-field-container input:valid {
 }
 
 form .input-field-container input:focus {
-  border: 2px solid #70a4ff !important;
+  border: 2px solid #005dff;
   outline: none;
 }
 

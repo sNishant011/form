@@ -24,7 +24,8 @@
           <i class="warning name-warning" id="name-warning"> </i>
         </div>
         <div class="input-field-container">
-          <input type="email" name="email" placeholder=" " onfocusout="emailValidator(this.value)" id="email" required>
+          <input type="email" name="email" placeholder=" " onchange="emailValidator(this.value)"
+            onkeyup="emailValidator(this.value)" id="email" required>
           <label for="email">Email</label>
           <i class="warning email-warning" id="email-warning"> </i>
         </div>
@@ -60,7 +61,7 @@
 
       </div>
 
-      <button class="btn submit" type="submit">Submit</button>
+      <button class="btn submit" id="submit-btn" type="submit" disabled>Submit</button>
     </form>
   </div>
   <script src="app.js"></script>
