@@ -136,7 +136,7 @@ const dobValidator = (dob) => {
 const checkPasswordStrength = (password) => {
   const password_warner = document.getElementById('password1-warning')
   if (password !== '') {
-    if (password <= 3) {
+    if (password.length <= 3) {
       isPasswordValid = false
       password_warner.innerHTML = 'Password should be at least of 4 characters.'
     } else {
