@@ -140,71 +140,96 @@ const checkPasswordStrength = (password) => {
       isPasswordValid = false
       password_warner.innerHTML = 'Password should be at least of 4 characters.'
     } else {
+      const common_pass_list = [
+        '1234',
+        '12345',
+        '123456',
+        '1234567',
+        '12345678',
+        '123456789',
+        '1234567890',
+        'qwerty',
+        'password',
+        'qwerty123',
+        '1q2w',
+        '1q2w3',
+        '1q2w3e',
+      ]
       isPasswordValid = true
-      const full_name = document.getElementById('name').value
-      const username = document.getElementById('username').value
-      const dob = document.getElementById('dob').value
-      const dates = dob.split('-')
-      const names = full_name.split(' ')
-      let insecure_variables = [...names, username, ...dates]
-      var uses_insecure_variables = false
-
-      for (var i = 0; i < insecure_variables.length; i++) {
-        if (insecure_variables[i] !== '') {
-          if (
-            password.toLowerCase().includes(insecure_variables[i].toLowerCase())
-          ) {
-            uses_insecure_variables = true
-          }
-        }
-        break
-      }
-      if (password.match(/[-!$%^&*()_ +|~=`\\#{}\[\]:";'<>?,.\/1234567890 ]/)) {
-        if (uses_insecure_variables) {
-          if (password.length < 5) {
-            password_warner.innerHTML =
-              'Very Weak (Contains guessable information)'
-          } else if (password.length < 8) {
-            password_warner.innerHTML = 'Weak (Contains guessable information)'
-          } else if (password.length <= 10) {
-            password_warner.innerHTML =
-              'Medium (Contains guessable information)'
-          } else {
-            password_warner.innerHTML =
-              'Strong (Contains guessable information)'
-          }
-        } else {
-          if (password.length < 5) {
-            password_warner.innerHTML = 'Weak'
-          } else if (password.length < 8) {
-            password_warner.innerHTML = 'Medium'
-          } else if (password.length <= 10) {
-            password_warner.innerHTML = 'Strong'
-          } else {
-            password_warner.innerHTML = 'Very Strong'
-          }
-        }
+      if (common_pass_list.includes(password)) {
+        password_warner.innerHTML = 'Very weak. (Easily predictable password.)'
       } else {
-        if (uses_insecure_variables) {
-          if (password.length < 5) {
-            password_warner.innerHTML =
-              'Very Weak (Contains guessable information)'
-          } else if (password.length < 8) {
-            password_warner.innerHTML = 'Weak (Contains guessable information)'
-          } else if (password.length <= 10) {
-            password_warner.innerHTML =
-              'Medium (Contains guessable information)'
+        const full_name = document.getElementById('name').value
+        const username = document.getElementById('username').value
+        const dob = document.getElementById('dob').value
+        const dates = dob.split('-')
+        const names = full_name.split(' ')
+        let insecure_variables = [...names, username, ...dates]
+        var uses_insecure_variables = false
+
+        for (var i = 0; i < insecure_variables.length; i++) {
+          if (insecure_variables[i] !== '') {
+            if (
+              password
+                .toLowerCase()
+                .includes(insecure_variables[i].toLowerCase())
+            ) {
+              uses_insecure_variables = true
+            }
+          }
+          break
+        }
+        if (
+          password.match(/[-!$%^&*()_ +|~=`\\#{}\[\]:";'<>?,.\/1234567890 ]/)
+        ) {
+          if (uses_insecure_variables) {
+            if (password.length < 5) {
+              password_warner.innerHTML =
+                'Very Weak (Contains guessable information)'
+            } else if (password.length < 8) {
+              password_warner.innerHTML =
+                'Weak (Contains guessable information)'
+            } else if (password.length <= 10) {
+              password_warner.innerHTML =
+                'Medium (Contains guessable information)'
+            } else {
+              password_warner.innerHTML =
+                'Strong (Contains guessable information)'
+            }
           } else {
-            password_warner.innerHTML =
-              'Strong (Contains guessable information)'
+            if (password.length < 5) {
+              password_warner.innerHTML = 'Weak'
+            } else if (password.length < 8) {
+              password_warner.innerHTML = 'Medium'
+            } else if (password.length <= 10) {
+              password_warner.innerHTML = 'Strong'
+            } else {
+              password_warner.innerHTML = 'Very Strong'
+            }
           }
         } else {
-          if (password.length < 5) {
-            password_warner.innerHTML = 'Weak'
-          } else if (password.length < 8) {
-            password_warner.innerHTML = 'Medium'
+          if (uses_insecure_variables) {
+            if (password.length < 5) {
+              password_warner.innerHTML =
+                'Very Weak (Contains guessable information)'
+            } else if (password.length < 8) {
+              password_warner.innerHTML =
+                'Weak (Contains guessable information)'
+            } else if (password.length <= 10) {
+              password_warner.innerHTML =
+                'Medium (Contains guessable information)'
+            } else {
+              password_warner.innerHTML =
+                'Strong (Contains guessable information)'
+            }
           } else {
-            password_warner.innerHTML = 'Strong'
+            if (password.length < 5) {
+              password_warner.innerHTML = 'Weak'
+            } else if (password.length < 8) {
+              password_warner.innerHTML = 'Medium'
+            } else {
+              password_warner.innerHTML = 'Strong'
+            }
           }
         }
       }

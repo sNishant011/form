@@ -115,6 +115,7 @@ form h1 {
 }
 
 form .inputs-container {
+  position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2];
@@ -134,10 +135,12 @@ form .inputs-container {
 }
 
 form .input-field-container {
+  position: relative;
   width: 100%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: 90px;
 }
 
 @media (max-width: 650px) {
@@ -148,7 +151,7 @@ form .input-field-container {
 }
 
 form .input-field-container label {
-  position: relative;
+  position: absolute;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -156,7 +159,7 @@ form .input-field-container label {
   display: block;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  top: -42px;
+  top: 18px;
   left: 20px;
   padding: 0 3px;
   height: 20px;
@@ -171,7 +174,7 @@ form .input-field-container label {
 @media (max-width: 650px) {
   form .input-field-container label {
     font-size: 1rem;
-    top: -35px;
+    top: 22px;
   }
 }
 
@@ -230,7 +233,7 @@ form .input-field-container input:focus + label,
 form .input-field-container input:not(:placeholder-shown) + label {
   font-size: 0.9rem;
   z-index: 1;
-  top: -71px;
+  top: -12px;
   color: #005dff;
   font-weight: 600;
   left: 15px;
@@ -240,7 +243,7 @@ form .input-field-container input:not(:placeholder-shown) + label {
   form .input-field-container input:valid + label,
   form .input-field-container input:focus + label,
   form .input-field-container input:not(:placeholder-shown) + label {
-    top: -60px;
+    top: -2px;
   }
 }
 
@@ -254,11 +257,11 @@ form #name {
 
 form .warning {
   display: block;
-  position: relative;
-  top: -18px;
-  left: 20px;
+  position: absolute;
+  margin-top: 3px;
   font-weight: 600;
   width: 95%;
+  left: 10px;
   color: #d30000;
   z-index: 1;
   font-size: 1rem;
@@ -268,10 +271,6 @@ form .warning {
   form .warning {
     font-size: 0.8rem;
   }
-}
-
-form .password1-warning {
-  top: -38px;
 }
 
 form .btn {
@@ -347,24 +346,18 @@ form button:disabled:hover {
 }
 
 .toggle-password {
-  position: relative;
-  top: -50%;
-  left: 91%;
+  position: absolute;
   cursor: pointer;
   padding: 0.5rem;
   color: #005dff;
-}
-
-@media (max-width: 800px) {
-  .toggle-password {
-    left: 85%;
-  }
+  right: 5px;
+  top: 9px;
+  z-index: 5;
 }
 
 @media (max-width: 650px) {
   .toggle-password {
-    top: -85%;
-    left: 87%;
+    top: 12px;
   }
 }
 /*# sourceMappingURL=main.css.map */
